@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>August Lyster – CV</title>
+  <meta name="description" content="Det officielle CV-site for August Lyster – HA(it)-studerende på CBS. Kontakt, links og overblik med plads til at udfylde erfaring og uddannelse." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🅰️</text></svg>">
+  <meta property="og:title" content="August Lyster – CV" />
+  <meta property="og:description" content="Moderne, responsivt CV for August Lyster." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/august-lyster.jpg" />
+  <style>
+    :root{
+      --bg:#ffffff;           /* pure white */
+      --card:#ffffff;         /* card bg */
+      --ink:#1a1a1a;          /* main text - dark grey */
+      --muted:#6b7280;        /* secondary text - medium grey */
+      --brand:#3b82f6;        /* professional blue accent */
+      --brand-2:#06b6d4;      /* cyan accent */
+      --border:#e5e7eb;       /* light grey borders */
+      --shadow:0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --ring:0 0 0 3px color-mix(in oklab, var(--brand) 25%, transparent);
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--ink); 
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+      min-height:100vh;
+    }
+
+    .container{max-width:1100px; margin-inline:auto; padding:24px;}
+
+  header{display:block; margin-bottom: 28px;}
+  .avatar{width:60%; aspect-ratio:3/4; border-radius:12px; overflow:hidden; box-shadow:none; border:none; margin: 0 auto 16px auto; background: transparent;}
+  .avatar img{width:100%; height:100%; object-fit:cover; object-position: center top;}
+  /* removed sticky behavior per request */
+  .left{grid-column: 1}
+  .right{grid-column: 2}
+  .card.compact{padding:14px; border-radius:14px}
+
+    h1{font-size:clamp(28px, 4.5vw, 46px); margin:0; letter-spacing:.3px}
+    .sub{color:var(--muted); margin-top:6px}
+
+    .contact{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .pill{display:inline-flex; align-items:center; gap:10px; background:var(--card); color:var(--ink); border:2px solid var(--border); border-radius:999px; padding:10px 14px; text-decoration:none; transition:.2s all; box-shadow: var(--shadow);}
+    .pill:hover{transform:translateY(-2px); border-color:var(--brand); box-shadow: 0 8px 25px -5px rgba(59, 130, 246, 0.15);}
+    .pill svg{width:18px; height:18px; opacity:.9}
+
+    .grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; margin-top:28px}
+
+    .card{background:var(--card); border:2px solid var(--border); border-radius:18px; padding:24px; box-shadow: var(--shadow);}
+    .card h2{margin:0 0 12px 0; font-size:clamp(18px, 2.5vw, 22px)}
+    .muted{color:var(--muted)}
+  .full{grid-column: 1 / -1}
+  /* flat section (no shadow, subtle border, compact) */
+  .flat{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:8px 12px; box-shadow:none}
+  .flat h2{margin:0 0 6px 0; font-size:clamp(15px, 2vw, 18px)}
+
+  .list{display:grid; gap:14px}
+  /* courses: two-column layout, tighter spacing */
+  [aria-labelledby="courses"] .list{ grid-template-columns: 1fr 1fr; gap:6px }
+  [aria-labelledby="courses"] .title{ font-size:14px }
+  [aria-labelledby="courses"] .muted{ font-size:14px; line-height:1.35; display:-webkit-box; -webkit-line-clamp:1; line-clamp:1; -webkit-box-orient:vertical; overflow:hidden }
+  /* projects: slightly larger spacing only here */
+  [aria-labelledby="projects"] .list{ gap:18px }
+  /* skills chips */
+  .skills-grid{display:flex; flex-wrap:wrap; gap:8px}
+  .chip{display:inline-flex; align-items:center; padding:7px 12px; border-radius:999px; border:1px solid var(--border); background:#f8fafc; color:var(--ink); font-size:13px; box-shadow: none}
+  .chip.small{font-size:12px; padding:6px 10px}
+    .item{display:grid; gap:4px}
+    .item .title{font-weight:600}
+    .item .meta{font-size:14px; color:var(--muted)}
+    .placeholder{opacity:.7}
+
+    .btn-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; text-decoration:none; border:2px solid var(--brand); background:var(--brand); color:white; font-weight:600; transition:.2s all;}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 8px 25px -5px rgba(59, 130, 246, 0.4); background:color-mix(in oklab, var(--brand) 90%, black);}
+
+    footer{margin:32px 0 16px; text-align:center; color:var(--muted); font-size:14px}
+
+    @media (max-width:860px){
+      .grid{grid-template-columns: 1fr;}
+      .avatar{width: 40%; max-width: 180px; margin: 0 auto 16px auto;}
+      .left, .right{grid-column: auto}
+      [aria-labelledby="courses"] .list{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>August Lyster</h1>
+        <p class="sub">HA(it) – CBS • Data, AI & automatisering</p>
+
+        <div class="contact" aria-label="Kontakt og links">
+          <a class="pill" href="tel:+4550499559" aria-label="Ring til +45 50 49 95 59">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.56.57 1 1 0 011 1v3.6a1 1 0 01-1 1A17.78 17.78 0 012 4a1 1 0 011-1h3.6a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.24 1.01l-2.3 2.22z"/></svg>
+            +45 50 49 95 59
+          </a>
+          <a class="pill" href="mailto:August.lyster@gmail.com" aria-label="Send mail til August.lyster@gmail.com">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            August.lyster@gmail.com
+          </a>
+          <a class="pill" href="https://www.linkedin.com/in/august-lyster-735b08258" target="_blank" rel="noopener" aria-label="LinkedIn profil">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7 0h3.8v2.2h.1c.5-1 1.7-2.2 3.6-2.2 3.8 0 4.5 2.5 4.5 5.8V24h-4v-7.2c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8V24h-4V8z"/></svg>
+            LinkedIn
+          </a>
+          <a class="pill" href="https://github.com/AugustLyster" target="_blank" rel="noopener" aria-label="GitHub profil">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A12 12 0 000 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2.1c-3.3.8-4-1.6-4-1.6-.5-1.3-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.7-1.4-2.6-.3-5.4-1.3-5.4-6a4.7 4.7 0 011.2-3.2 4.3 4.3 0 01.1-3.1s1-.3 3.3 1.2a11.4 11.4 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.3 1 .2 2.1.1 3.1a4.7 4.7 0 011.2 3.2c0 4.7-2.8 5.7-5.4 6 .5.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0024 12.7 12 12 0 0012 .5z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="grid" id="content">
+      <!-- LEFT COLUMN -->
+      <section class="card left" aria-labelledby="about">
+        <h2 id="about">Professionel profil</h2>
+        <p class="muted">Jeg læser HA(it) på CBS, hvor jeg kombinerer økonomi og teknologi i praksis. Jeg har erfaring med at arbejde med data i Excel, SQL og Python samt med at udvikle løsninger, der kan optimere processer og skabe værdi for virksomheder. Gennem både studier og personlige projekter har jeg fordybet mig i AI og automatisering, blandt andet ved at udvikle en AI-drevet trading bot.</p>
+        <p class="muted">Jeg har også stået for at præsentere et IT-projekt direkte for Joe and the Juice's CTO, hvilket gav topkarakter og styrkede mine evner til at formidle komplekse ideer klart og overbevisende. Jeg motiveres af at lære nyt, tage initiativ og finde innovative løsninger, der kan gøre en reel forskel i organisationer.</p>
+      </section>
+
+      <aside aria-labelledby="profile-photo" class="right">
+        <div class="avatar" aria-hidden="true">
+          <!-- Profilbillede flyttet til højre kolonne -->
+          <img src="assets/Profilbillede farve.jpg" alt="Portrætfoto af August Lyster" />
+        </div>
+      </aside>
+      <!-- PRIORITIZE EDUCATION -->
+      <section class="card left" aria-labelledby="education" style="padding-bottom: 28px;">
+        <h2 id="education">Uddannelse</h2>
+        <div class="list" style="gap:24px">
+          <div class="item">
+            <div class="title">Bachelor i HA(it), CBS – <span class="muted">August 2023 – Juni 2026</span></div>
+            <div class="muted">Bachelor of Science in Business Administration and Information Technology. Specialisering inden for data, AI og automatisering med fokus på at kombinere forretningsforståelse med tekniske løsninger.</div>
+          </div>
+          <div class="item" style="margin-top: 6px;">
+            <div class="title">STX, Rysensteen Gymnasium – <span class="muted">August 2020 – Juni 2023</span></div>
+            <div class="muted">Studentereksamen med fokus på matematik og fysik. Deltog i Global Citizen Program med internationale perspektiver.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS IN RIGHT COLUMN, COMPACT -->
+      <aside class="card compact right" aria-labelledby="skills">
+        <h2 id="skills">Kompetencer</h2>
+        <div class="skills-grid" role="list">
+          <span class="chip" role="listitem">Python</span>
+          <span class="chip" role="listitem">SQL</span>
+          <span class="chip" role="listitem">JavaScript</span>
+          <span class="chip" role="listitem">JSON</span>
+          <span class="chip" role="listitem">Excel (Avanceret)</span>
+          <span class="chip" role="listitem">PowerBI</span>
+          <span class="chip" role="listitem">Datavisualisering</span>
+          <span class="chip" role="listitem">Rapportering</span>
+          <span class="chip" role="listitem">Azure</span>
+          <span class="chip" role="listitem">Linux</span>
+          <span class="chip" role="listitem">Database design</span>
+          <span class="chip" role="listitem">n8n Workflows</span>
+          <span class="chip" role="listitem">Procesoptimering</span>
+          <span class="chip" role="listitem">Problemløsning</span>
+          <span class="chip" role="listitem">Datadrevet beslutning</span>
+          <span class="chip" role="listitem">Dansk</span>
+          <span class="chip" role="listitem">Engelsk</span>
+        </div>
+      </aside>
+
+      <!-- PRIORITIZE PROJECTS -->
+      <section class="card left" aria-labelledby="projects">
+        <h2 id="projects">Udvalgte projekter</h2>
+        <div class="list">
+          <div class="item">
+            <div class="title">Joe & the Juice IT-Løsning</div>
+            <div class="muted">Udviklede og præsenterede en IT-løsning for Joe & the Juice's CTO som del af CBS-uddannelsen. Projektet gav topkarakter og demonstrerede evnen til at kombinere teknisk viden med forretningsforståelse.</div>
+          </div>
+          <div class="item">
+            <div class="title">AI-drevet Trading Bot</div>
+            <div class="muted">Udviklede en AI-baseret trading bot i Python, der hentede og analyserede markedsdata automatisk. Kombinerede machine learning algoritmer med finansiel dataanalyse for at identificere handelsmuligheder.</div>
+          </div>
+          <div class="item">
+            <div class="title">Automated Workflow Solutions</div>
+            <div class="muted">Automatiserede repetitive opgaver med JSON og n8n workflow, hvilket hjalp med at øge effektivitet og reducerede manuelt arbejde. Designede skalerbare processer for forbedret produktivitet.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Move Experience into right column instead of download -->
+      <aside class="card right" aria-labelledby="experience">
+        <h2 id="experience">Erfaring</h2>
+        <div class="list">
+          <div class="item">
+            <div class="title">Tjener/Koordinator, Restaurant Gorilla – <span class="muted">Juni 2024 – Nu</span></div>
+            <ul class="muted" style="margin:6px 0 0 18px; display:grid; gap:6px">
+              <li>Koordinerer processer på tværs af afdelinger</li>
+              <li>Optimerer workflows for arrangementer med op til 360 gæster</li>
+              <li>Sikrer struktureret planlægning og effektiv kommunikation</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="title">Studentermedhjælper, Tivoli A/S – <span class="muted">Apr 2023 – Jan 2024</span></div>
+            <ul class="muted" style="margin:6px 0 0 18px; display:grid; gap:6px">
+              <li>Arbejdet effektivt i et travlt miljø med høje standarder</li>
+              <li>Styrket tværfaglig kommunikation og præcision</li>
+              <li>Udviklet stærke problemløsningsevner</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+      
+        <aside class="flat full" aria-labelledby="courses">
+          <h2 id="courses">Kurser</h2>
+          <div class="list">
+            <div class="item">
+              <div class="title">Excel Advanced</div>
+              <div class="muted">Funktioner, pivottabeller, formler og datamodellering</div>
+            </div>
+            <div class="item">
+              <div class="title">PowerPoint Fundamentals</div>
+              <div class="muted">Strukturerede præsentationer og visuel formidling</div>
+            </div>
+          </div>
+        </aside>
+
+      <!-- (Erfaring er nu i højre kolonne) -->
+    </main>
+
+    <!-- Download section above footer (compact, non-sticky) -->
+    <div style="background: var(--card); border-top:1px solid var(--border); margin-top:20px;">
+    <div class="container" style="display:flex; justify-content:center; gap:10px; padding:8px 16px;">
+        <a class="btn" href="assets/AugustLyster_cv.pdf" download style="padding:6px 12px; font-size:14px;">Download CV (PDF)</a>
+        <a class="btn" href="assets/AugustLyster_CV.docx" download style="padding:6px 12px; font-size:14px;">Download CV (DOCX)</a>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="year"></span> August Lyster • Speed, Simplicity, Style
+    </footer>
+  </div>
+
+  <script>
+    // set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
