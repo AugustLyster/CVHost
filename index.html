@@ -248,8 +248,8 @@
     <!-- Download section above footer (compact, non-sticky) -->
     <div style="background: var(--card); border-top:1px solid var(--border); margin-top:20px;">
     <div class="container" style="display:flex; justify-content:center; gap:10px; padding:8px 16px;">
-  <a class="btn" href="assets/AugustLyster_CV.pdf" download style="padding:6px 12px; font-size:14px;" data-i18n="download_pdf">Download CV (PDF)</a>
-    <a class="btn" href="assets/AugustLyster_CV.docx" download style="padding:6px 12px; font-size:14px;" data-i18n="download_docx">Download CV (DOCX)</a>
+  <a class="btn" href="assets/AugustLyster_CVDK.pdf" download style="padding:6px 12px; font-size:14px;" data-i18n="download_pdf" id="dl-pdf" data-da="assets/AugustLyster_CVDK.pdf" data-en="assets/AugustLyster_CV_ENG.pdf">Download CV (PDF)</a>
+    <a class="btn" href="assets/AugustLyster_CVDK.docx" download style="padding:6px 12px; font-size:14px;" data-i18n="download_docx" id="dl-docx" data-da="assets/AugustLyster_CVDK.docx" data-en="assets/AugustLyster_CV_ENG.docx">Download CV (DOCX)</a>
       </div>
     </div>
 
@@ -335,8 +335,14 @@
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if(!key) return;
-        // store current textContent as Danish source
-        daMap[key] = el.textContent;
+        // If element is a list, capture its <li> children as an array so bullets can be restored
+        if(el.tagName === 'UL' || el.tagName === 'OL'){
+          const items = Array.from(el.querySelectorAll('li')).map(li => li.textContent.trim());
+          daMap[key] = items;
+        } else {
+          // store current textContent as Danish source
+          daMap[key] = el.textContent;
+        }
       });
       document.querySelectorAll('[data-i18n-attr]').forEach(el => {
         const spec = el.getAttribute('data-i18n-attr');
@@ -388,6 +394,14 @@
           if(value === undefined) return;
           el.setAttribute(attr, value);
         });
+      });
+
+      // switch download links if they have data-da/data-en attributes
+      document.querySelectorAll('[id^="dl-"]').forEach(el => {
+        const da = el.getAttribute('data-da');
+        const en = el.getAttribute('data-en');
+        if(lang === 'en' && en) el.setAttribute('href', en);
+        else if(lang === 'da' && da) el.setAttribute('href', da);
       });
 
       // update language buttons state (now buttons are direct .lang-pill elements)
