@@ -57,11 +57,12 @@
     .pill:hover{transform:translateY(-2px); border-color:var(--brand); box-shadow: 0 8px 25px -5px rgba(59, 130, 246, 0.15);}
     .pill svg{width:18px; height:18px; opacity:.9}
 
-    .grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; margin-top:28px}
+  .grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; margin-top:28px}
 
-    .card{background:var(--card); border:2px solid var(--border); border-radius:18px; padding:24px; box-shadow: var(--shadow);}
-    .card h2{margin:0 0 12px 0; font-size:clamp(18px, 2.5vw, 22px)}
-    .muted{color:var(--muted)}
+  .card{background:var(--card); border:2px solid var(--border); border-radius:18px; padding:24px; box-shadow: var(--shadow);}
+  .card h2{margin:0 0 12px 0; font-size:clamp(18px, 2.5vw, 22px)}
+  .muted{color:var(--muted)}
+  .edu-card{padding:16px}
   .full{grid-column: 1 / -1}
   /* flat section (no shadow, subtle border, compact) */
   .flat{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:8px 12px; box-shadow:none}
@@ -73,9 +74,15 @@
   [aria-labelledby="courses"] .title{ font-size:14px }
   [aria-labelledby="courses"] .muted{ font-size:14px; line-height:1.35; display:-webkit-box; -webkit-line-clamp:1; line-clamp:1; -webkit-box-orient:vertical; overflow:hidden }
   /* projects: slightly larger spacing only here */
-  [aria-labelledby="projects"] .list{ gap:18px }
+  [aria-labelledby="projects"] .list{ gap:14px }
+  .project-group{display:grid; gap:12px; padding:14px; border:1px solid var(--border); border-radius:14px; background:#f8fafc}
+  .project-group .list-heading{margin:0}
+  .project-group .item{padding:0; margin:0}
+  .project-group .muted{font-size:15px; line-height:1.5; color:#4b5563}
   /* skills chips */
   .skills-group{display:grid; gap:8px; margin-bottom:14px}
+  .skills-group .title{font-size:13px; letter-spacing:.4px; text-transform:uppercase; color:var(--muted); font-weight:700}
+  .list-heading{font-size:12px; letter-spacing:.5px; text-transform:uppercase; color:var(--muted); font-weight:700; margin-top:2px}
   .skills-grid{display:flex; flex-wrap:wrap; gap:8px}
   .chip{display:inline-flex; align-items:center; padding:7px 12px; border-radius:999px; border:1px solid var(--border); background:#f8fafc; color:var(--ink); font-size:13px; box-shadow: none}
   .chip.small{font-size:12px; padding:6px 10px}
@@ -149,7 +156,7 @@
         </div>
       </aside>
       <!-- PRIORITIZE EDUCATION -->
-      <section class="card left" aria-labelledby="education" style="padding-bottom: 28px;">
+      <section class="card left edu-card" aria-labelledby="education">
   <h2 id="education" data-i18n="education_title">Uddannelse</h2>
         <div class="list" style="gap:24px">
           <div class="item">
@@ -185,6 +192,10 @@
             <span class="chip" role="listitem" data-i18n="skill_linux">Linux</span>
             <span class="chip" role="listitem" data-i18n="skill_dbdesign">Database design</span>
             <span class="chip" role="listitem" data-i18n="skill_n8n">n8n Workflows</span>
+            <span class="chip" role="listitem" data-i18n="skill_powerautomate">Power Automate</span>
+            <span class="chip" role="listitem" data-i18n="skill_copilot">M365 Copilot</span>
+            <span class="chip" role="listitem" data-i18n="skill_genai">Generativ AI</span>
+            <span class="chip" role="listitem" data-i18n="skill_figma">Figma (UI/UX)</span>
           </div>
         </div>
         <div class="skills-group" style="margin-bottom:0">
@@ -193,6 +204,11 @@
             <span class="chip" role="listitem" data-i18n="skill_processopt">Procesoptimering</span>
             <span class="chip" role="listitem" data-i18n="skill_problem">Problemløsning</span>
             <span class="chip" role="listitem" data-i18n="skill_datadriven">Datadrevet beslutning</span>
+            <span class="chip" role="listitem" data-i18n="skill_comm_change">Kommunikation og change management</span>
+            <span class="chip" role="listitem" data-i18n="skill_training">Træning og workshops</span>
+            <span class="chip" role="listitem" data-i18n="skill_adoption">Adoptionskampagner</span>
+            <span class="chip" role="listitem" data-i18n="skill_aikb">AI vidensbase vedligehold</span>
+            <span class="chip" role="listitem" data-i18n="skill_admin_ops">Ad hoc administration og drift</span>
             <span class="chip" role="listitem" data-i18n="skill_danish">Dansk</span>
             <span class="chip" role="listitem" data-i18n="skill_english">Engelsk</span>
           </div>
@@ -203,17 +219,27 @@
       <section class="card left" aria-labelledby="projects">
         <h2 id="projects" data-i18n="projects_title">Udvalgte projekter</h2>
         <div class="list">
-          <div class="item">
-            <div class="title" data-i18n="proj_joe_title">Joe & the Juice IT-Løsning</div>
-            <div class="muted" data-i18n="proj_joe_desc">Udviklede og præsenterede en IT-løsning for Joe & the Juice's CTO som del af CBS-uddannelsen. Projektet gav topkarakter og demonstrerede evnen til at kombinere teknisk viden med forretningsforståelse.</div>
+          <div class="project-group">
+            <div class="list-heading" data-i18n="projects_school_heading">Skoleprojekter</div>
+            <div class="item">
+              <div class="title" data-i18n="proj_fam_title">FamTime – Automatisk familietid</div>
+              <div class="muted" data-i18n="proj_fam_desc">FamTime er en digital familiekalender, der automatisk finder frirum på tværs af alles kalendere, matcher præferencer og foreslår aktiviteter. AI-assistenten skriver danske idéer ud fra familiens stemning, og brugerne godkender eller afviser i simple sektioner. Appen kører vedligeholdet selv, men giver plads til manuelle ændringer, og vi har produceret marketingvideoer til lanceringen.</div>
+            </div>
+            <div class="item">
+              <div class="title" data-i18n="proj_joe_title">Joe & the Juice IT-Løsning</div>
+              <div class="muted" data-i18n="proj_joe_desc">Udviklede og præsenterede en IT-løsning for Joe & the Juice's CTO som del af CBS-uddannelsen. Projektet gav topkarakter og demonstrerede evnen til at kombinere teknisk viden med forretningsforståelse.</div>
+            </div>
           </div>
-          <div class="item">
-            <div class="title" data-i18n="proj_bot_title">AI-drevet Trading Bot</div>
-            <div class="muted" data-i18n="proj_bot_desc">Udviklede en AI-baseret trading bot i Python, der hentede og analyserede markedsdata automatisk. Kombinerede machine learning algoritmer med finansiel dataanalyse for at identificere handelsmuligheder.</div>
-          </div>
-          <div class="item">
-            <div class="title" data-i18n="proj_auto_title">Automated Workflow Solutions</div>
-            <div class="muted" data-i18n="proj_auto_desc">Automatiserede repetitive arbejdsprocesser ved brug af Microsoft Power Automate, herunder integrationer og flows i M365-miljøet.</div>
+          <div class="project-group">
+            <div class="list-heading" data-i18n="projects_private_heading">Private projekter</div>
+            <div class="item">
+              <div class="title" data-i18n="proj_bot_title">AI-drevet Trading Bot</div>
+              <div class="muted" data-i18n="proj_bot_desc">Udviklede en AI-baseret trading bot i Python, der hentede og analyserede markedsdata automatisk. Kombinerede machine learning algoritmer med finansiel dataanalyse for at identificere handelsmuligheder.</div>
+            </div>
+            <div class="item">
+              <div class="title" data-i18n="proj_auto_title">Automated Workflow Solutions</div>
+              <div class="muted" data-i18n="proj_auto_desc">Automatiserede repetitive arbejdsprocesser ved brug af Microsoft Power Automate, herunder integrationer og flows i M365-miljøet.</div>
+            </div>
           </div>
         </div>
       </section>
@@ -259,6 +285,10 @@
             <div class="item">
                 <div class="title" data-i18n="course_powerbi25">PowerBI (2025)</div>
                 <div class="muted" data-i18n="course_powerbi25_desc">Datamodeller, dashboards og deling af indsigter i PowerBI.</div>
+            </div>
+            <div class="item">
+                <div class="title" data-i18n="course_nodezero">NodeZero Certified</div>
+                <div class="muted" data-i18n="course_nodezero_desc">Certificering i NodeZero til automatiserede sikkerhedsscanninger og pentests.</div>
             </div>
           </div>
         </aside>
@@ -324,20 +354,33 @@
         skill_linux: 'Linux',
         skill_dbdesign: 'Database design',
         skill_n8n: 'n8n Workflows',
+        skill_powerautomate: 'Power Automate',
+        skill_copilot: 'M365 Copilot',
+        skill_genai: 'Generative AI',
+        skill_figma: 'Figma (UI/UX)',
         skills_tech_label: 'Technical skills',
         skills_cross_label: 'Cross-functional strengths',
         skill_processopt: 'Process optimization',
         skill_problem: 'Problem solving',
         skill_datadriven: 'Data-driven decision making',
+        skill_comm_change: 'Communication and change management',
+        skill_training: 'Training and workshops',
+        skill_adoption: 'Adoption campaigns',
+        skill_aikb: 'AI knowledge base upkeep',
+        skill_admin_ops: 'Ad hoc administration and operations',
         skill_danish: 'Danish',
         skill_english: 'English',
         projects_title: 'Selected projects',
+        projects_school_heading: 'School projects',
+        projects_private_heading: 'Personal projects',
         proj_joe_title: 'Joe & the Juice IT Solution',
         proj_joe_desc: "Developed and presented an IT solution to Joe & the Juice's CTO as part of my CBS education. The project received top marks and demonstrated the ability to combine technical knowledge with business understanding.",
         proj_bot_title: 'AI-powered Trading Bot',
         proj_bot_desc: 'Built an AI-based trading bot in Python that fetched and analysed market data automatically. Combined machine learning algorithms with financial data analysis to identify trading opportunities.',
         proj_auto_title: 'Automated Workflow Solutions',
         proj_auto_desc: 'Automated repetitive business processes using Microsoft Power Automate, including integrations and flows across the M365 environment.',
+        proj_fam_title: 'FamTime – Automated family time',
+        proj_fam_desc: 'FamTime is a digital family calendar that auto-finds shared free time across calendars, matches preferences and proposes activities. The AI helper writes Danish activity ideas based on family mood; users swipe to approve/decline in simple sections. The app keeps itself updated, supports manual edits, and we produced marketing videos for launch.',
         experience_title: 'Experience',
   exp_gorilla_label: 'Waiter/Coordinator, Restaurant Gorilla –',
         exp_gorilla_dates: 'June 2024 – Present',
@@ -353,7 +396,9 @@
         course_powerautomate: 'Power Automate (2025)',
         course_powerautomate_desc: 'Automating workflows and integrations in M365 with Power Automate.',
         course_powerbi25: 'PowerBI (2025)',
-        course_powerbi25_desc: 'Data models, dashboards and sharing insights in PowerBI.'
+        course_powerbi25_desc: 'Data models, dashboards and sharing insights in PowerBI.',
+        course_nodezero: 'NodeZero Certified',
+        course_nodezero_desc: 'Certification in NodeZero for automated security scanning and pentesting.'
       },
       // 'da' intentionally left empty — we'll capture the original DOM texts into a da map
       da: {}
