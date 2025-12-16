@@ -75,6 +75,7 @@
   /* projects: slightly larger spacing only here */
   [aria-labelledby="projects"] .list{ gap:18px }
   /* skills chips */
+  .skills-group{display:grid; gap:8px; margin-bottom:14px}
   .skills-grid{display:flex; flex-wrap:wrap; gap:8px}
   .chip{display:inline-flex; align-items:center; padding:7px 12px; border-radius:999px; border:1px solid var(--border); background:#f8fafc; color:var(--ink); font-size:13px; box-shadow: none}
   .chip.small{font-size:12px; padding:6px 10px}
@@ -169,24 +170,32 @@
       <!-- SKILLS IN RIGHT COLUMN, COMPACT -->
       <aside class="card compact right" aria-labelledby="skills">
         <h2 id="skills" data-i18n="skills_title">Kompetencer</h2>
-        <div class="skills-grid" role="list">
-          <span class="chip" role="listitem" data-i18n="skill_python">Python</span>
-          <span class="chip" role="listitem" data-i18n="skill_sql">SQL</span>
-          <span class="chip" role="listitem" data-i18n="skill_js">JavaScript</span>
-          <span class="chip" role="listitem" data-i18n="skill_json">JSON</span>
-          <span class="chip" role="listitem" data-i18n="skill_excel">Excel (Avanceret)</span>
-          <span class="chip" role="listitem" data-i18n="skill_powerbi">PowerBI</span>
-          <span class="chip" role="listitem" data-i18n="skill_dataviz">Datavisualisering</span>
-          <span class="chip" role="listitem" data-i18n="skill_reporting">Rapportering</span>
-          <span class="chip" role="listitem" data-i18n="skill_azure">Azure</span>
-          <span class="chip" role="listitem" data-i18n="skill_linux">Linux</span>
-          <span class="chip" role="listitem" data-i18n="skill_dbdesign">Database design</span>
-          <span class="chip" role="listitem" data-i18n="skill_n8n">n8n Workflows</span>
-          <span class="chip" role="listitem" data-i18n="skill_processopt">Procesoptimering</span>
-          <span class="chip" role="listitem" data-i18n="skill_problem">Problemløsning</span>
-          <span class="chip" role="listitem" data-i18n="skill_datadriven">Datadrevet beslutning</span>
-          <span class="chip" role="listitem" data-i18n="skill_danish">Dansk</span>
-          <span class="chip" role="listitem" data-i18n="skill_english">Engelsk</span>
+        <div class="skills-group">
+          <div class="title" data-i18n="skills_tech_label">Tekniske kompetencer</div>
+          <div class="skills-grid" role="list">
+            <span class="chip" role="listitem" data-i18n="skill_python">Python</span>
+            <span class="chip" role="listitem" data-i18n="skill_sql">SQL</span>
+            <span class="chip" role="listitem" data-i18n="skill_js">JavaScript</span>
+            <span class="chip" role="listitem" data-i18n="skill_json">JSON</span>
+            <span class="chip" role="listitem" data-i18n="skill_excel">Excel (Avanceret)</span>
+            <span class="chip" role="listitem" data-i18n="skill_powerbi">PowerBI</span>
+            <span class="chip" role="listitem" data-i18n="skill_dataviz">Datavisualisering</span>
+            <span class="chip" role="listitem" data-i18n="skill_reporting">Rapportering</span>
+            <span class="chip" role="listitem" data-i18n="skill_azure">Azure</span>
+            <span class="chip" role="listitem" data-i18n="skill_linux">Linux</span>
+            <span class="chip" role="listitem" data-i18n="skill_dbdesign">Database design</span>
+            <span class="chip" role="listitem" data-i18n="skill_n8n">n8n Workflows</span>
+          </div>
+        </div>
+        <div class="skills-group" style="margin-bottom:0">
+          <div class="title" data-i18n="skills_cross_label">Tværfaglige styrker</div>
+          <div class="skills-grid" role="list">
+            <span class="chip" role="listitem" data-i18n="skill_processopt">Procesoptimering</span>
+            <span class="chip" role="listitem" data-i18n="skill_problem">Problemløsning</span>
+            <span class="chip" role="listitem" data-i18n="skill_datadriven">Datadrevet beslutning</span>
+            <span class="chip" role="listitem" data-i18n="skill_danish">Dansk</span>
+            <span class="chip" role="listitem" data-i18n="skill_english">Engelsk</span>
+          </div>
         </div>
       </aside>
 
@@ -242,6 +251,14 @@
             <div class="item">
                 <div class="title" data-i18n="course_ppt">PowerPoint Fundamentals</div>
                 <div class="muted" data-i18n="course_ppt_desc">Strukturerede præsentationer og visuel formidling</div>
+            </div>
+            <div class="item">
+                <div class="title" data-i18n="course_powerautomate">Power Automate (2025)</div>
+                <div class="muted" data-i18n="course_powerautomate_desc">Automatisering af workflows og integrationer i M365 via Power Automate.</div>
+            </div>
+            <div class="item">
+                <div class="title" data-i18n="course_powerbi25">PowerBI (2025)</div>
+                <div class="muted" data-i18n="course_powerbi25_desc">Datamodeller, dashboards og deling af indsigter i PowerBI.</div>
             </div>
           </div>
         </aside>
@@ -307,6 +324,8 @@
         skill_linux: 'Linux',
         skill_dbdesign: 'Database design',
         skill_n8n: 'n8n Workflows',
+        skills_tech_label: 'Technical skills',
+        skills_cross_label: 'Cross-functional strengths',
         skill_processopt: 'Process optimization',
         skill_problem: 'Problem solving',
         skill_datadriven: 'Data-driven decision making',
@@ -330,7 +349,11 @@
         course_excel: 'Excel Advanced',
         course_excel_desc: 'Functions, pivot tables, formulas and data modelling',
         course_ppt: 'PowerPoint Fundamentals',
-        course_ppt_desc: 'Structured presentations and visual communication'
+        course_ppt_desc: 'Structured presentations and visual communication',
+        course_powerautomate: 'Power Automate (2025)',
+        course_powerautomate_desc: 'Automating workflows and integrations in M365 with Power Automate.',
+        course_powerbi25: 'PowerBI (2025)',
+        course_powerbi25_desc: 'Data models, dashboards and sharing insights in PowerBI.'
       },
       // 'da' intentionally left empty — we'll capture the original DOM texts into a da map
       da: {}
