@@ -545,8 +545,8 @@
     };
     let currentLang = 'da';
 
-    // capture original Danish texts and attributes into translations.da so we can reliably revert
-    function captureOriginals(){
+	    // capture original Danish texts and attributes into translations.da so we can reliably revert
+	    function captureOriginals(){
       const daMap = {};
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -570,11 +570,56 @@
         });
       });
       translations.da = daMap;
-    }
+	    }
 
-    function applyLanguage(lang){
-      const map = translations[lang] || {};
-      currentLang = lang === 'en' ? 'en' : 'da';
+	    function getDownloadUrl(el, lang){
+	      const da = el.getAttribute('data-da');
+	      const en = el.getAttribute('data-en');
+	      if(lang === 'en') return en || da || el.getAttribute('href');
+	      return da || en || el.getAttribute('href');
+	    }
+
+	    function setDownloadFilenameFromUrl(el, url){
+	      if(!el || !url) return;
+	      if(!el.hasAttribute('download')) return;
+	      const clean = url.split('#')[0].split('?')[0];
+	      const name = clean.split('/').pop();
+	      if(name) el.setAttribute('download', name);
+	    }
+
+	    function cacheBustedUrl(url){
+	      if(!url) return url;
+	      const [base, hash] = url.split('#');
+	      const baseNoQuery = base.split('?')[0];
+	      return baseNoQuery + '?v=' + Date.now() + (hash ? '#' + hash : '');
+	    }
+
+	    function applyDownloadLinks(lang){
+	      document.querySelectorAll('[id^="dl-"]').forEach(el => {
+	        const url = getDownloadUrl(el, lang);
+	        if(url) el.setAttribute('href', url);
+	        setDownloadFilenameFromUrl(el, url);
+	      });
+	    }
+
+	    function setupDownloadCacheBust(){
+	      document.querySelectorAll('[id^="dl-"]').forEach(el => {
+	        const refresh = () => {
+	          const url = getDownloadUrl(el, currentLang);
+	          if(!url) return;
+	          el.setAttribute('href', cacheBustedUrl(url));
+	          setDownloadFilenameFromUrl(el, url);
+	        };
+	        el.addEventListener('pointerdown', refresh);
+	        el.addEventListener('keydown', (e) => {
+	          if(e.key === 'Enter' || e.key === ' ') refresh();
+	        });
+	      });
+	    }
+
+	    function applyLanguage(lang){
+	      const map = translations[lang] || {};
+	      currentLang = lang === 'en' ? 'en' : 'da';
 
       // set document language for accessibility
       if(lang === 'en') document.documentElement.lang = 'en';
@@ -611,15 +656,9 @@
           if(value === undefined) return;
           el.setAttribute(attr, value);
         });
-      });
+	      });
 
-      // switch download links if they have data-da/data-en attributes
-      document.querySelectorAll('[id^="dl-"]').forEach(el => {
-        const da = el.getAttribute('data-da');
-        const en = el.getAttribute('data-en');
-        if(lang === 'en' && en) el.setAttribute('href', en);
-        else if(lang === 'da' && da) el.setAttribute('href', da);
-      });
+	      applyDownloadLinks(lang);
 
       // update language buttons state (now buttons are direct .lang-pill elements)
       document.querySelectorAll('.lang-pill').forEach(btn => {
@@ -663,22 +702,23 @@
       syncSkillVisibility(false);
     }
 
-    // prepare originals and initial state
-    captureOriginals();
+	    // prepare originals and initial state
+	    captureOriginals();
 
-    // event handlers for new pill buttons
+	    // event handlers for new pill buttons
     document.querySelectorAll('.lang-pill').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const lang = btn.getAttribute('data-lang');
         applyLanguage(lang);
       });
-    });
+	    });
 
-    setupSkillsToggle();
+	    setupSkillsToggle();
+	    setupDownloadCacheBust();
 
-    // initialize from localStorage or default to Danish
-    const saved = (function(){ try{ return localStorage.getItem('preferredLang'); }catch(e){ return null } })();
-    applyLanguage(saved === 'en' ? 'en' : 'da');
-  </script>
+	    // initialize from localStorage or default to Danish
+	    const saved = (function(){ try{ return localStorage.getItem('preferredLang'); }catch(e){ return null } })();
+	    applyLanguage(saved === 'en' ? 'en' : 'da');
+	  </script>
 </body>
 </html>
