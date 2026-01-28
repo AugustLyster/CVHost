@@ -99,11 +99,25 @@
   .card{background:var(--card); border:2px solid var(--border); border-radius:18px; padding:24px; box-shadow: var(--shadow);}
   .card h2{margin:0 0 12px 0; font-size:clamp(18px, 2.5vw, 22px)}
   .muted{color:var(--muted)}
-  .edu-card{padding:16px}
-  .full{grid-column: 1 / -1}
-  /* flat section (no shadow, subtle border, compact) */
-  .flat{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:8px 12px; box-shadow:none}
-  .flat h2{margin:0 0 6px 0; font-size:clamp(15px, 2vw, 18px)}
+	    .edu-card{padding:16px}
+	
+	    /* education: bachelor toggle */
+	    .edu-details{margin-top:12px}
+	    .edu-details summary{list-style:none}
+	    .edu-details summary::-webkit-details-marker{display:none}
+	    .edu-summary{padding:8px 12px; font-size:13px}
+	    .edu-summary .label-hide{display:none}
+	    .edu-details[open] .edu-summary .label-show{display:none}
+	    .edu-details[open] .edu-summary .label-hide{display:inline}
+	    .edu-chevron{transition:transform .2s ease; opacity:.8}
+	    .edu-details[open] .edu-chevron{transform:rotate(180deg)}
+	    .edu-more{margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:grid; gap:10px}
+	    .chips-list{display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:8px; padding:0; margin:0; list-style:none}
+	    .chips-list li{padding:8px 10px; border-radius:12px; border:1px solid var(--border); background:#f8fafc; color:var(--ink); font-size:12px; line-height:1.35}
+	  .full{grid-column: 1 / -1}
+	  /* flat section (no shadow, subtle border, compact) */
+	  .flat{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:8px 12px; box-shadow:none}
+	  .flat h2{margin:0 0 6px 0; font-size:clamp(15px, 2vw, 18px)}
 
   .list{display:grid; gap:14px}
   /* courses: two-column layout, tighter spacing */
@@ -253,15 +267,59 @@
       <!-- PRIORITIZE EDUCATION -->
       <section class="card left edu-card" aria-labelledby="education">
   <h2 id="education" data-i18n="education_title">Uddannelse</h2>
-        <div class="list" style="gap:24px">
-          <div class="item">
-            <div class="title"><span data-i18n="edu_bachelor_label">Bachelor i HA(it), CBS –</span> <span class="muted" data-i18n="edu_bachelor_dates">August 2023 – Juni 2026</span></div>
-            <div class="muted" data-i18n="edu_bachelor_desc">Bachelor of Science in Business Administration and Information Technology. Specialisering inden for data, AI og automatisering med fokus på at kombinere forretningsforståelse med tekniske løsninger.</div>
-          </div>
-          <div class="item" style="margin-top: 6px;">
-            <div class="title"><span data-i18n="edu_kpmg_label">KPMG TechAcademy –</span> <span class="muted" data-i18n="edu_kpmg_dates">Efterår 2025 – Forår 2026</span></div>
-            <div class="muted" data-i18n="edu_kpmg_desc">En del af KPMG TechAcademy, et selektivt program under KPMG NewTech, hvor jeg samarbejder med specialister inden for GenAI, quantum computing og andre frontier teknologier om at skabe løsninger på rådgivningscases på tværs af brancher.</div>
-          </div>
+	        <div class="list" style="gap:24px">
+	          <div class="item">
+	            <div class="title"><span data-i18n="edu_bachelor_label">Bachelor i HA(it), CBS –</span> <span class="muted" data-i18n="edu_bachelor_dates">August 2023 – Juni 2026</span></div>
+	            <div class="muted" data-i18n="edu_bachelor_desc">Bachelor of Science in Business Administration and Information Technology. Specialisering inden for data, AI og automatisering med fokus på at kombinere forretningsforståelse med tekniske løsninger.</div>
+	            <details class="edu-details">
+	              <summary class="see-all edu-summary">
+	                <span class="label-show" data-i18n="edu_bachelor_toggle_show">Se fag &amp; læring</span>
+	                <span class="label-hide" data-i18n="edu_bachelor_toggle_hide">Vis færre</span>
+	                <span class="edu-chevron" aria-hidden="true">▾</span>
+	              </summary>
+	              <div class="edu-more">
+	                <div class="list-heading" data-i18n="edu_bachelor_courses_title">Relevante fag</div>
+	                <ul class="chips-list" data-i18n="edu_bachelor_courses_list">
+	                  <li>Introduction to Information Systems</li>
+	                  <li>IT-projektledelse</li>
+	                  <li>IT-forandringsledelse</li>
+	                  <li>IT-strategi</li>
+	                  <li>Analyse og design af brugervenlige informationssystemer</li>
+	                  <li>Programmering og udvikling af små systemer og databaser</li>
+	                  <li>Programmering og udvikling af små systemer og databaser fortsat</li>
+	                  <li>Computernetværk og distribuerede systemer</li>
+	                  <li>Innovation og ny teknologi</li>
+	                  <li>Indføring i organisationers opbygning og funktion</li>
+	                  <li>Indføring i organisationers opbygning og funktion fortsat</li>
+	                  <li>Virksomhedens økonomiske styring (1–5): beslutningssituationer, regnskab, finansiering, økonomisk teori, økonomistyring</li>
+	                  <li>Makroøkonomi</li>
+	                  <li>Marketing (valgfag)</li>
+	                  <li>Statistik (valgfag)</li>
+	                </ul>
+	                <div class="list-heading" data-i18n="edu_bachelor_learnings_title">Hvad jeg har lært</div>
+	                <ul class="muted" style="margin:6px 0 0 18px; display:grid; gap:6px" data-i18n="edu_bachelor_learnings_list">
+	                  <li>Omsætte forretningsbehov til krav, user stories og løsningsdesign i informationssystemer (brugervenligt fokus)</li>
+	                  <li>Udvikle små systemer og databaser i SQL/JavaScript med datamodellering og kvalitet i fokus</li>
+	                  <li>Planlægge og drive IT-projekter med styring af scope, interessenter og leverancer</li>
+	                  <li>Lede forandring og adoption med kommunikation, træning og måling af effekt i organisationer</li>
+	                  <li>Udarbejde business cases og beslutningsgrundlag med regnskab, finansiering og økonomistyring</li>
+	                  <li>Arbejde datadrevet med marketing og statistik: segmentering, KPI’er og grundlæggende analyse/eksperimenter</li>
+	                  <li>Forstå grundprincipper i netværk og distribuerede systemer og hvordan de påvirker drift, sikkerhed og skalering</li>
+	                  <li>Koble IT-strategi og innovation til forretningens mål, risici og værdiskabelse</li>
+	                </ul>
+	              </div>
+	            </details>
+	          </div>
+	          <div class="item" style="margin-top: 6px;">
+	            <div class="title"><span data-i18n="edu_bachelorproject_label">Bachelorprojekt i samarbejde med Tivoli A/S –</span> <span class="muted" data-i18n="edu_bachelorproject_dates">Igangværende</span></div>
+	            <ul class="muted" style="margin:6px 0 0 18px; display:grid; gap:6px" data-i18n="edu_bachelorproject_list">
+	              <li>Implementering af Microsoft Copilot: Analyse af barrierer for adoption samt udvikling af metoder til måling af værdiskabelse i store organisationer.</li>
+	            </ul>
+	          </div>
+	          <div class="item" style="margin-top: 6px;">
+	            <div class="title"><span data-i18n="edu_kpmg_label">KPMG TechAcademy –</span> <span class="muted" data-i18n="edu_kpmg_dates">Efterår 2025 – Forår 2026</span></div>
+	            <div class="muted" data-i18n="edu_kpmg_desc">En del af KPMG TechAcademy, et selektivt program under KPMG NewTech, hvor jeg samarbejder med specialister inden for GenAI, quantum computing og andre frontier teknologier om at skabe løsninger på rådgivningscases på tværs af brancher.</div>
+	          </div>
           <div class="item" style="margin-top: 6px;">
             <div class="title"><span data-i18n="edu_stx_label">STX, Rysensteen Gymnasium –</span> <span class="muted" data-i18n="edu_stx_dates">August 2020 – Juni 2023</span></div>
             <div class="muted" data-i18n="edu_stx_desc">Studentereksamen med fokus på matematik og fysik. Deltog i Global Citizen Program med internationale perspektiver.</div>
@@ -324,23 +382,25 @@
               <span class="chip small" role="listitem" data-i18n="skill_json">JSON</span>
               <span class="chip small" role="listitem" data-i18n="skill_dataviz">Datavisualisering</span>
               <span class="chip small" role="listitem" data-i18n="skill_reporting">Rapportering</span>
-              <span class="chip small" role="listitem" data-i18n="skill_azure">Azure</span>
-              <span class="chip small" role="listitem" data-i18n="skill_linux">Linux</span>
-              <span class="chip small" role="listitem" data-i18n="skill_dbdesign">Database design</span>
-              <span class="chip small" role="listitem" data-i18n="skill_n8n">n8n Workflows</span>
-              <span class="chip small" role="listitem" data-i18n="skill_copilot">M365 Copilot</span>
-              <span class="chip small" role="listitem" data-i18n="skill_figma">Figma (UI/UX)</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_azure">Azure</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_linux">Linux</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_itsecurity">IT-sikkerhed</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_dbdesign">Database design</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_n8n">n8n Workflows</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_copilot">M365 Copilot</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_figma">Figma (UI/UX)</span>
             </div>
             <div class="list-heading" data-i18n="skills_cross_label">Tværfaglige styrker</div>
             <div class="skills-grid" role="list">
               <span class="chip small" role="listitem" data-i18n="skill_processopt">Procesoptimering</span>
               <span class="chip small" role="listitem" data-i18n="skill_problem">Problemløsning</span>
-              <span class="chip small" role="listitem" data-i18n="skill_datadriven">Datadrevet beslutning</span>
-              <span class="chip small" role="listitem" data-i18n="skill_comm_change">Kommunikation og change management</span>
-              <span class="chip small" role="listitem" data-i18n="skill_training">Træning og workshops</span>
-              <span class="chip small" role="listitem" data-i18n="skill_adoption">Adoptionskampagner</span>
-              <span class="chip small" role="listitem" data-i18n="skill_aikb">AI vidensbase vedligehold</span>
-              <span class="chip small" role="listitem" data-i18n="skill_admin_ops">Ad hoc administration og drift</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_datadriven">Datadrevet beslutning</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_comm_change">Kommunikation og change management</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_sales">Salg</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_training">Træning og workshops</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_adoption">Adoptionskampagner</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_aikb">AI vidensbase vedligehold</span>
+	              <span class="chip small" role="listitem" data-i18n="skill_admin_ops">Ad hoc administration og drift</span>
               <span class="chip small" role="listitem" data-i18n="skill_danish">Dansk</span>
               <span class="chip small" role="listitem" data-i18n="skill_english">Engelsk</span>
             </div>
@@ -381,27 +441,27 @@
         </div>
       </section>
 
-      <aside class="card right" aria-labelledby="experience">
-        <h2 id="experience" data-i18n="experience_title">Erfaring</h2>
-        <div class="list">
-          <div class="item">
-            <div class="title"><span data-i18n="exp_gorilla_label">Tjener/Koordinator, Restaurant Gorilla –</span> <span class="muted" data-i18n="exp_gorilla_dates">Juni 2024 – Nu</span></div>
-            <ul class="muted" style="margin:6px 0 0 18px; display:grid; gap:6px" data-i18n="exp_gorilla_list">
-              <li>Koordinerer processer på tværs af afdelinger</li>
-              <li>Optimerer workflows for arrangementer med op til 360 gæster</li>
-              <li>Sikrer struktureret planlægning og effektiv kommunikation</li>
-            </ul>
-          </div>
-          <div class="item">
-            <div class="title"><span data-i18n="exp_tivoli_label">Studentermedhjælper, Tivoli A/S –</span> <span class="muted" data-i18n="exp_tivoli_dates">Apr 2023 – Jan 2024</span></div>
-            <ul class="muted" style="margin:6px 0 0 18px; display:grid; gap:6px" data-i18n="exp_tivoli_list">
-              <li>Arbejdet effektivt i et travlt miljø med høje standarder</li>
-              <li>Styrket tværfaglig kommunikation og præcision</li>
-              <li>Udviklet stærke problemløsningsevner</li>
-            </ul>
-          </div>
-        </div>
-      </aside>
+	      <aside class="card right" aria-labelledby="experience">
+	        <h2 id="experience" data-i18n="experience_title">Erfaring</h2>
+	        <div class="list">
+	          <div class="item">
+	            <div class="title"><span data-i18n="exp_optionsec_label">OptionSec | Studentermedhjælper – Business Development &amp; IT Solutions</span> <span class="muted" data-i18n="exp_optionsec_dates"></span></div>
+	            <ul class="muted" style="margin:6px 0 0 18px; display:grid; gap:6px" data-i18n="exp_optionsec_list">
+	              <li>Central rolle i kundevendte aktiviteter i et team med tre fuldtidskonsulenter og bygger bro mellem komplekse it-infrastrukturer og kundens forretningsmæssige behov</li>
+	              <li>Rådgivning &amp; salg: Faciliterer dialog med beslutningstagere og demonstrerer, hvordan vores it-løsninger optimerer kundens sikkerhed og daglige drift</li>
+	              <li>Bidrager med min HA(it)-baggrund til at skræddersy tekniske løsninger, der matcher kundens specifikke krav</li>
+	            </ul>
+	          </div>
+	          <div class="item">
+	            <div class="title"><span data-i18n="exp_gorilla_label">Tjener/Koordinator, Restaurant Gorilla –</span> <span class="muted" data-i18n="exp_gorilla_dates">Juni 2024 – Nu</span></div>
+	            <ul class="muted" style="margin:6px 0 0 18px; display:grid; gap:6px" data-i18n="exp_gorilla_list">
+	              <li>Koordinerer processer på tværs af afdelinger</li>
+	              <li>Optimerer workflows for arrangementer med op til 360 gæster</li>
+	              <li>Sikrer struktureret planlægning og effektiv kommunikation</li>
+	            </ul>
+	          </div>
+	        </div>
+	      </aside>
 
       <aside class="flat full" aria-labelledby="courses">
           <h2 id="courses" data-i18n="courses_title">Kurser</h2>
@@ -470,15 +530,51 @@
         profile_title: 'Professional profile',
         profile_p1: 'I am studying HA(it) at CBS, where I combine business and technology in practice. I have experience working with data in Excel, SQL and Python and building solutions that optimise processes and create value for organisations. Through both studies and personal projects I have specialised in AI and automation, including developing an AI-driven trading bot.',
         profile_p2: "I also presented an IT project directly to the CTO of Joe & the Juice, which received top marks and strengthened my ability to communicate complex ideas clearly and persuasively. I'm motivated by learning new things, taking initiative and finding innovative solutions that can make a real difference in organisations.",
-        education_title: 'Education',
-  edu_bachelor_label: 'Bachelor in HA(it), CBS –',
-  edu_bachelor_dates: 'August 2023 – June 2026',
-        edu_bachelor_desc: 'Bachelor of Science in Business Administration and Information Technology. Specialisation in data, AI and automation with a focus on combining business understanding with technical solutions.',
-        edu_kpmg_label: 'KPMG TechAcademy –',
-        edu_kpmg_dates: 'Autumn 2025 – Spring 2026',
-        edu_kpmg_desc: "Selected for KPMG's TechAcademy, an exclusive program led by KPMG NewTech experts. Working hands-on with GenAI, Quantum and other frontier technologies to solve consulting cases across industries and present my own solutions.",
-  edu_stx_label: 'STX, Rysensteen Gymnasium –',
-  edu_stx_dates: 'August 2020 – June 2023',
+	        education_title: 'Education',
+	  edu_bachelor_label: 'Bachelor in HA(it), CBS –',
+	  edu_bachelor_dates: 'August 2023 – June 2026',
+	        edu_bachelor_desc: 'Bachelor of Science in Business Administration and Information Technology. Specialisation in data, AI and automation with a focus on combining business understanding with technical solutions.',
+	        edu_bachelor_toggle_show: 'See courses & learning',
+	        edu_bachelor_toggle_hide: 'Show less',
+		        edu_bachelor_courses_title: 'Key courses',
+		        edu_bachelor_courses_list: [
+		          'Introduction to Information Systems',
+		          'IT project management',
+		          'IT change management',
+		          'IT strategy',
+		          'Analysis and design of user-friendly information systems',
+		          'Programming & development of small systems and databases',
+		          'Programming & development of small systems and databases (continued)',
+		          'Computer networks and distributed systems',
+		          'Innovation and new technology',
+		          'Introduction to organisational structure and function',
+		          'Organisational structure and function (continued)',
+		          'Management Accounting (1–5): decision-making, accounting, corporate finance, economic theory, management control',
+		          'Macroeconomics',
+		          'Marketing (elective)',
+		          'Statistics (elective)'
+		        ],
+		        edu_bachelor_learnings_title: "What I've learned",
+		        edu_bachelor_learnings_list: [
+		          'Translate business needs into requirements, user stories and system designs (user-centred focus)',
+		          'Build small systems and databases in SQL/JavaScript with solid data modelling and quality',
+		          'Plan and run IT projects with clear scope, stakeholders and delivery management',
+		          'Drive change and adoption through communication, training and impact measurement',
+		          'Create business cases and decision material using accounting, finance and management control',
+		          'Work data-driven with marketing and statistics: segmentation, KPIs and basic analysis/experiments',
+		          'Understand core concepts in networks and distributed systems and their impact on operations, security and scalability',
+		          'Connect IT strategy and innovation to business goals, risk and value creation'
+		        ],
+	        edu_bachelorproject_label: "Bachelor's project in collaboration with Tivoli A/S –",
+	        edu_bachelorproject_dates: 'Ongoing',
+	        edu_bachelorproject_list: [
+	          'Implementing Microsoft Copilot: Analysing barriers to adoption and developing methods to measure value creation in large organisations.'
+	        ],
+	        edu_kpmg_label: 'KPMG TechAcademy –',
+	        edu_kpmg_dates: 'Autumn 2025 – Spring 2026',
+	        edu_kpmg_desc: "Selected for KPMG's TechAcademy, an exclusive program led by KPMG NewTech experts. Working hands-on with GenAI, Quantum and other frontier technologies to solve consulting cases across industries and present my own solutions.",
+	  edu_stx_label: 'STX, Rysensteen Gymnasium –',
+	  edu_stx_dates: 'August 2020 – June 2023',
         edu_stx_desc: 'Upper secondary education with focus on mathematics and physics. Participated in Global Citizen Program with international perspectives.',
         skills_title: 'Skills',
         skill_python: 'Python',
@@ -489,25 +585,27 @@
         skill_powerbi: 'PowerBI',
         skill_dataviz: 'Data visualization',
         skill_reporting: 'Reporting',
-        skill_azure: 'Azure',
-        skill_linux: 'Linux',
-        skill_dbdesign: 'Database design',
-        skill_n8n: 'n8n Workflows',
-        skill_powerautomate: 'Power Automate',
-        skill_automation: 'Automation (Power Automate)',
-        skill_copilot: 'M365 Copilot',
+	        skill_azure: 'Azure',
+	        skill_linux: 'Linux',
+	        skill_itsecurity: 'IT security',
+	        skill_dbdesign: 'Database design',
+	        skill_n8n: 'n8n Workflows',
+	        skill_powerautomate: 'Power Automate',
+	        skill_automation: 'Automation (Power Automate)',
+	        skill_copilot: 'M365 Copilot',
         skill_genai: 'Generative AI',
         skill_figma: 'Figma (UI/UX)',
         skills_tech_label: 'Technical skills',
         skills_cross_label: 'Cross-functional strengths',
-        skill_processopt: 'Process optimization',
-        skill_problem: 'Problem solving',
-        skill_datadriven: 'Data-driven decision making',
-        skill_comm_change: 'Communication and change management',
-        skill_training: 'Training and workshops',
-        skill_adoption: 'Adoption campaigns',
-        skill_aikb: 'AI knowledge base upkeep',
-        skill_admin_ops: 'Ad hoc administration and operations',
+	        skill_processopt: 'Process optimization',
+	        skill_problem: 'Problem solving',
+	        skill_datadriven: 'Data-driven decision making',
+	        skill_comm_change: 'Communication and change management',
+	        skill_sales: 'Sales',
+	        skill_training: 'Training and workshops',
+	        skill_adoption: 'Adoption campaigns',
+	        skill_aikb: 'AI knowledge base upkeep',
+	        skill_admin_ops: 'Ad hoc administration and operations',
         skill_danish: 'Danish',
         skill_english: 'English',
         projects_title: 'Selected projects',
@@ -521,16 +619,20 @@
         proj_auto_desc: 'Automated repetitive business processes using Microsoft Power Automate, including integrations and flows across the M365 environment.',
         proj_fam_title: 'FamTime – Automated family time',
         proj_fam_desc: 'Built FamTime, an AI-driven app that syncs family calendars and generates tailored activity suggestions. Covered end-to-end: technical build, AI algorithm integration, market validation and launch through video marketing.',
-        experience_title: 'Experience',
-  exp_gorilla_label: 'Waiter/Coordinator, Restaurant Gorilla –',
-        exp_gorilla_dates: 'June 2024 – Present',
-        exp_gorilla_list: ['Coordinate processes across departments', 'Optimize workflows for events of up to 360 guests', 'Ensure structured planning and effective communication'],
-  exp_tivoli_label: 'Student Assistant, Tivoli A/S –',
-        exp_tivoli_dates: 'Apr 2023 – Jan 2024',
-        exp_tivoli_list: ['Worked efficiently in a busy environment with high standards', 'Enhanced cross-disciplinary communication and precision', 'Developed strong problem-solving skills'],
-        courses_title: 'Courses',
-        course_excel: 'Excel Advanced',
-        course_excel_desc: 'Functions, pivot tables, formulas and data modelling',
+	        experience_title: 'Experience',
+	        exp_optionsec_label: 'OptionSec | Student Assistant – Business Development & IT Solutions',
+	        exp_optionsec_dates: '',
+	        exp_optionsec_list: [
+	          'Key role in customer-facing activities in a team of three full-time consultants, bridging complex IT infrastructures with business needs',
+	          'Consulting & sales: Facilitate dialogue with decision-makers and demonstrate how our IT solutions optimise security and daily operations',
+	          'Leverage my HA(it) background to tailor technical solutions to specific customer requirements'
+	        ],
+	  exp_gorilla_label: 'Waiter/Coordinator, Restaurant Gorilla –',
+	        exp_gorilla_dates: 'June 2024 – Present',
+	        exp_gorilla_list: ['Coordinate processes across departments', 'Optimize workflows for events of up to 360 guests', 'Ensure structured planning and effective communication'],
+	        courses_title: 'Courses',
+	        course_excel: 'Excel Advanced',
+	        course_excel_desc: 'Functions, pivot tables, formulas and data modelling',
         course_ppt: 'PowerPoint Fundamentals',
         course_ppt_desc: 'Structured presentations and visual communication',
         course_powerautomate: 'Power Automate (2025)',
