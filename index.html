@@ -174,8 +174,8 @@
 	    .hero-avatar{transform:translateX(18px);}
 
   /* skill meters */
-    .skills-card{height:520px;}
-    .skills-scroll{height:100%; display:flex; flex-direction:column; overflow:auto; padding-right:4px;}
+    .skills-card{height:auto; align-self:start;}
+    .skills-scroll{display:flex; flex-direction:column; padding-right:4px;}
     .primary-skills{display:grid; gap:12px; margin:12px 0 16px;}
     .skill-row{display:grid; grid-template-columns: 1fr 110px; gap:12px; align-items:center; padding:12px 14px; border:1px solid var(--border); border-radius:12px; background:#f8fafc;}
     .skill-label{display:grid; gap:2px;}
@@ -229,7 +229,7 @@
         <div class="header-inner">
           <div class="identity">
             <h1 data-i18n="name">August Lyster</h1>
-            <p class="sub" data-i18n="subtitle">HA(it) – CBS • Data, AI & automatisering</p>
+            <p class="sub" data-i18n="subtitle">HA(it) – CBS • AI-implementering & Digital Udvikling</p>
           </div>
           <div class="nav-wrap">
             <nav class="anchor-nav" aria-label="Hurtig navigation">
@@ -330,7 +330,7 @@
 	          <div class="item" style="margin-top: 6px;">
 	            <div class="title"><span data-i18n="edu_bachelorproject_label">Bachelorprojekt i samarbejde med Tivoli A/S –</span> <span class="muted" data-i18n="edu_bachelorproject_dates">Igangværende</span></div>
 	            <ul class="muted" style="margin:6px 0 0 18px; display:grid; gap:6px" data-i18n="edu_bachelorproject_list">
-	              <li>Implementering af Microsoft Copilot: Analyse af barrierer for adoption samt udvikling af metoder til måling af værdiskabelse i store organisationer.</li>
+	              <li>Undersøger hvad der driver eller bremser adoption af Microsoft Copilot i store organisationer, og udvikler konkrete metoder til at måle hvilken værdi implementeringen skaber.</li>
 	            </ul>
 	          </div>
 	          <div class="item" style="margin-top: 6px;">
@@ -379,6 +379,14 @@
               </div>
               <div class="skill-meter" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
                 <span class="skill-meter-fill" style="--level:92%"></span>
+              </div>
+            </div>
+            <div class="skill-row" role="listitem">
+              <div class="skill-label">
+                <span class="skill-name" data-i18n="skill_copilot">M365 Copilot</span>
+              </div>
+              <div class="skill-meter" role="progressbar" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100">
+                <span class="skill-meter-fill" style="--level:93%"></span>
               </div>
             </div>
             <div class="skill-row" role="listitem">
@@ -492,7 +500,7 @@
 		        </div>
 		      </aside>
 
-      <aside class="flat full" aria-labelledby="courses">
+      <aside class="card full" aria-labelledby="courses">
           <h2 id="courses" data-i18n="courses_title">Kurser</h2>
           <div class="list">
             <div class="item">
@@ -541,7 +549,7 @@
   const translations = {
       en: {
         name: 'August Lyster',
-        subtitle: 'BSc HA(it) – CBS • Data, AI & Automation',
+        subtitle: 'BSc HA(it) – CBS • AI Implementation & Digital Development',
         label_lang: 'Language',
         img_alt: 'Portrait photo of August Lyster',
         nav_about: 'About',
@@ -597,7 +605,7 @@
 	        edu_bachelorproject_label: "Bachelor's project in collaboration with Tivoli A/S –",
 	        edu_bachelorproject_dates: 'Ongoing',
 	        edu_bachelorproject_list: [
-	          'Implementing Microsoft Copilot: Analysing barriers to adoption and developing methods to measure value creation in large organisations.'
+          'Investigates what drives or inhibits adoption of Microsoft Copilot in large organisations, and develops concrete methods to measure the value created by the implementation.'
 	        ],
 	        edu_kpmg_label: 'KPMG TechAcademy –',
 	        edu_kpmg_dates: 'Autumn 2025 – Spring 2026',
